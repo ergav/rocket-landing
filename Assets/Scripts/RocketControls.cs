@@ -18,6 +18,7 @@ public class RocketControls : MonoBehaviour
     [SerializeField] private float currentVelocity;
 
     private float leftRightMovement;
+    private float forwardBackMovement;
 
     private RocketFuel _fuel;
 
@@ -46,6 +47,11 @@ public class RocketControls : MonoBehaviour
     public void RocketLeftRightInput(InputAction.CallbackContext ctx)
     {
         leftRightMovement = ctx.ReadValue<float>();
+    }
+    
+    public void RocketForwardBackInput(InputAction.CallbackContext ctx)
+    {
+        forwardBackMovement = ctx.ReadValue<float>();
     }
     
     private void Update()
@@ -78,6 +84,7 @@ public class RocketControls : MonoBehaviour
         {
             rb.AddForce(transform.up * rocketForce,ForceMode.Force);
             rb.AddForce(Vector3.right * leftRightMovement);
+            rb.AddForce(Vector3.forward * forwardBackMovement);
         }
     }
 }

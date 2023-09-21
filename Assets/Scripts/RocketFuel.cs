@@ -30,6 +30,7 @@ public class RocketFuel : MonoBehaviour
     public void TakeDamage(float amount)
     {
         currentHealth -= amount;
+        Debug.Log(amount + " damage taken!");
 
         if (currentHealth <= 0)
         {
@@ -41,6 +42,11 @@ public class RocketFuel : MonoBehaviour
     public void HealDamage(float amount)
     {
         currentHealth += amount;
+        
+        if (currentHealth >= maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
     }
 
     public void Death()
@@ -53,7 +59,7 @@ public class RocketFuel : MonoBehaviour
             Rigidbody phys = hit.GetComponent<Rigidbody>();
             if (phys != null)
             {
-                phys.AddExplosionForce(500, explosionPos, 30, 3);
+                phys.AddExplosionForce(250, explosionPos, 30, 3);
             }
         }
         Destroy(gameObject);

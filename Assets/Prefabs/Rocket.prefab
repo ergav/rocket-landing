@@ -13,12 +13,12 @@ GameObject:
   - component: {fileID: 1029839595810311831}
   - component: {fileID: 5135058575908414939}
   - component: {fileID: 3892286860354571623}
-  - component: {fileID: 2873676381449574059}
   - component: {fileID: 2079026424949700749}
   - component: {fileID: 2071960486955320872}
+  - component: {fileID: 7886451750254792750}
   m_Layer: 0
   m_Name: Rocket
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -131,28 +131,6 @@ MonoBehaviour:
   currentVelocity: 0
   fire: {fileID: 1080874204080954777}
   crashDamageMultiplier: 2
---- !u!64 &2873676381449574059
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 21733062842154078}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!54 &2079026424949700749
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -237,11 +215,48 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: a583b60f-1130-4bde-b3aa-3f696f21c1bd
     m_ActionName: Player/RocketLeftRight[/Keyboard/d,/Keyboard/a]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3892286860354571623}
+        m_TargetAssemblyTypeName: RocketControls, Assembly-CSharp
+        m_MethodName: RocketForwardBackInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 4adadb83-0945-4514-8c3a-fbbebaaacda6
+    m_ActionName: Player/RocketForwardBackward[/Keyboard/w,/Keyboard/s]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!65 &7886451750254792750
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 21733062842154078}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.0000001, y: 3.7334776, z: 1.0000002}
+  m_Center: {x: 0.000000059604645, y: 0.36570787, z: -0.00000011920929}
 --- !u!1 &33132752227349507
 GameObject:
   m_ObjectHideFlags: 0
@@ -255,7 +270,6 @@ GameObject:
   - component: {fileID: 8670227969023231741}
   - component: {fileID: 1361860732253147212}
   - component: {fileID: 3823429349229218382}
-  - component: {fileID: 8697140266314735444}
   m_Layer: 0
   m_Name: Prism
   m_TagString: Untagged
@@ -453,7 +467,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 3766
+  m_VersionIndex: 3769
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -536,28 +550,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 33132752227349507}
   m_Mesh: {fileID: 0}
---- !u!64 &8697140266314735444
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 33132752227349507}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!1 &952419890501939521
 GameObject:
   m_ObjectHideFlags: 0
@@ -571,7 +563,6 @@ GameObject:
   - component: {fileID: 2883724812857687059}
   - component: {fileID: 1225556529910119490}
   - component: {fileID: 3536733701247372933}
-  - component: {fileID: 1831474090034449784}
   m_Layer: 0
   m_Name: Prism (1)
   m_TagString: Untagged
@@ -769,7 +760,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 3766
+  m_VersionIndex: 3769
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -851,28 +842,6 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 952419890501939521}
-  m_Mesh: {fileID: 0}
---- !u!64 &1831474090034449784
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 952419890501939521}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
   m_Mesh: {fileID: 0}
 --- !u!1 &1080874204080954777
 GameObject:
@@ -1294,7 +1263,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 531
+  m_VersionIndex: 534
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1392,7 +1361,6 @@ GameObject:
   - component: {fileID: 2529248392131947537}
   - component: {fileID: 685570593384337293}
   - component: {fileID: 7622268431286085069}
-  - component: {fileID: 7060127449662962647}
   m_Layer: 0
   m_Name: Prism (3)
   m_TagString: Untagged
@@ -1590,7 +1558,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 3766
+  m_VersionIndex: 3772
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1673,28 +1641,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3376954879560224106}
   m_Mesh: {fileID: 0}
---- !u!64 &7060127449662962647
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3376954879560224106}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!1 &3949844819272639669
 GameObject:
   m_ObjectHideFlags: 0
@@ -1708,7 +1654,6 @@ GameObject:
   - component: {fileID: 4525663633652849811}
   - component: {fileID: 3433438306133236709}
   - component: {fileID: 1031665401759899626}
-  - component: {fileID: 1829467858475116265}
   m_Layer: 0
   m_Name: Cone
   m_TagString: Untagged
@@ -2611,7 +2556,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 26
+  m_VersionIndex: 29
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -2695,28 +2640,6 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3949844819272639669}
-  m_Mesh: {fileID: 0}
---- !u!64 &1829467858475116265
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3949844819272639669}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
   m_Mesh: {fileID: 0}
 --- !u!1 &4836141626415603024
 GameObject:
@@ -3103,7 +3026,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 447
+  m_VersionIndex: 450
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -3573,7 +3496,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 491
+  m_VersionIndex: 494
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -3671,7 +3594,6 @@ GameObject:
   - component: {fileID: 8118385315087936357}
   - component: {fileID: 1518595520728012592}
   - component: {fileID: 2888482114855665161}
-  - component: {fileID: 8107012171671321129}
   m_Layer: 0
   m_Name: Prism (2)
   m_TagString: Untagged
@@ -3869,7 +3791,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 3766
+  m_VersionIndex: 3769
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -3951,28 +3873,6 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7983929315139548356}
-  m_Mesh: {fileID: 0}
---- !u!64 &8107012171671321129
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7983929315139548356}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
   m_Mesh: {fileID: 0}
 --- !u!1 &8631630640352592032
 GameObject:
@@ -4359,7 +4259,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 345
+  m_VersionIndex: 348
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
