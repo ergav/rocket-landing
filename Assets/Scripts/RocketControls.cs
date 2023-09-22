@@ -26,11 +26,14 @@ public class RocketControls : MonoBehaviour
 
     [SerializeField] private float crashDamageMultiplier = 10;
 
+    private RocketSoundManager _soundManager;
+
     
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         _fuel = GetComponent<RocketFuel>();
+        _soundManager = GetComponent<RocketSoundManager>();
     }
 
     public void RocketInput(InputAction.CallbackContext ctx)
@@ -63,10 +66,12 @@ public class RocketControls : MonoBehaviour
         {
             _fuel.DrainFuel();
             fire.SetActive(true);
+            _soundManager.PlayRocketNozzleSound();
         }
         else
         {
             fire.SetActive(false);
+            _soundManager.StopRocketNozzleSound();
         }
     }
 
@@ -76,6 +81,10 @@ public class RocketControls : MonoBehaviour
         {
             Debug.Log("Crash!");
             _fuel.TakeDamage(crashDamageMultiplier * Mathf.Abs(currentVelocity));
+            if (_soundManager != null)
+            {
+                _soundManager.PlayCrashSound();
+            }
         }
     }
 

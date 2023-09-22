@@ -934,7 +934,7 @@ GameObject:
   - component: {fileID: 8925680992178126481}
   - component: {fileID: 2056918990855268910}
   m_Layer: 0
-  m_Name: GasCan
+  m_Name: GasCanItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

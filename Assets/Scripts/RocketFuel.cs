@@ -21,16 +21,21 @@ public class RocketFuel : MonoBehaviour
     [HideInInspector] public bool fullyFueled;
     
     [SerializeField] private UIManager uiManager;
+    private RocketSoundManager _soundManager;
 
 
-    public void DrainFuel()
+    private void Start()
     {
-        currentFuel -= fuelDecreasePerSecond * Time.deltaTime;
-        
+        _soundManager = GetComponent<RocketSoundManager>();
         if (uiManager == null)
         {
             uiManager = FindObjectOfType<UIManager>();
         }
+    }
+
+    public void DrainFuel()
+    {
+        currentFuel -= fuelDecreasePerSecond * Time.deltaTime;
     }
 
     public void GainFuel(float amount)
@@ -39,6 +44,10 @@ public class RocketFuel : MonoBehaviour
         if (currentFuel >= maxFuel)
         {
             currentFuel = maxFuel;
+        }
+        if (_soundManager != null)
+        {
+            _soundManager.PlayRefuelSound();
         }
     }
 
@@ -52,7 +61,7 @@ public class RocketFuel : MonoBehaviour
             currentHealth = 0;
             if (uiManager != null)
             {
-                uiManager.healthBar.localScale = new Vector2(maxHealth / 100 * currentHealth / 100, uiManager.healthBar.localScale.y);
+                uiManager.healthBar.localScale = new Vector2((maxHealth / 100) * (currentHealth / 100), uiManager.healthBar.localScale.y);
             }
             Death();
         }
@@ -65,6 +74,11 @@ public class RocketFuel : MonoBehaviour
         if (currentHealth >= maxHealth)
         {
             currentHealth = maxHealth;
+        }
+
+        if (_soundManager != null)
+        {
+            _soundManager.PlayRepairSound();
         }
     }
 
@@ -80,6 +94,11 @@ public class RocketFuel : MonoBehaviour
             {
                 phys.AddExplosionForce(250, explosionPos, 30, 3);
             }
+        }
+
+        if (_soundManager != null)
+        {
+            _soundManager.PlayExplosionSound();
         }
         Destroy(gameObject);
     }
@@ -112,8 +131,8 @@ public class RocketFuel : MonoBehaviour
         
         if (uiManager != null)
         {
-            uiManager.healthBar.localScale = new Vector2(maxHealth / 100 * currentHealth / 100, uiManager.healthBar.localScale.y);
-            uiManager.fuelBar.localScale = new Vector2(maxFuel / 100 * currentFuel / 100, uiManager.fuelBar.localScale.y);
+            uiManager.healthBar.localScale = new Vector2((maxHealth / 100) * (currentHealth / 100), uiManager.healthBar.localScale.y);
+            uiManager.fuelBar.localScale = new Vector2((maxFuel / 100) * (currentFuel / 100), uiManager.fuelBar.localScale.y);
         }
     }
 }
