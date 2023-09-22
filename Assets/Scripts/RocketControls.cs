@@ -25,6 +25,7 @@ public class RocketControls : MonoBehaviour
     [SerializeField] private GameObject fire;
 
     [SerializeField] private float crashDamageMultiplier = 10;
+
     
     private void Start()
     {

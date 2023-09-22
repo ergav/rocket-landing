@@ -17,14 +17,29 @@ public class RocketFuel : MonoBehaviour
 
     [SerializeField] private GameObject rocketGibs;
 
+    [HideInInspector] public bool fullyHealed;
+    [HideInInspector] public bool fullyFueled;
+    
+    [SerializeField] private UIManager uiManager;
+
+
     public void DrainFuel()
     {
-        currentFuel-= fuelDecreasePerSecond * Time.deltaTime;
+        currentFuel -= fuelDecreasePerSecond * Time.deltaTime;
+        
+        if (uiManager == null)
+        {
+            uiManager = FindObjectOfType<UIManager>();
+        }
     }
 
     public void GainFuel(float amount)
     {
         currentFuel += amount;
+        if (currentFuel >= maxFuel)
+        {
+            currentFuel = maxFuel;
+        }
     }
 
     public void TakeDamage(float amount)
@@ -35,6 +50,10 @@ public class RocketFuel : MonoBehaviour
         if (currentHealth <= 0)
         {
             currentHealth = 0;
+            if (uiManager != null)
+            {
+                uiManager.healthBar.localScale = new Vector2(maxHealth / 100 * currentHealth / 100, uiManager.healthBar.localScale.y);
+            }
             Death();
         }
     }
@@ -71,6 +90,30 @@ public class RocketFuel : MonoBehaviour
         {
             currentFuel = 0;
             noFuelLeft = true;
+        }
+
+        if (currentHealth == maxHealth)
+        {
+            fullyHealed = true;
+        }
+        else
+        {
+            fullyHealed = false;
+        }
+        
+        if (currentFuel == maxFuel)
+        {
+            fullyFueled = true;
+        }
+        else
+        {
+            fullyFueled = false;
+        }
+        
+        if (uiManager != null)
+        {
+            uiManager.healthBar.localScale = new Vector2(maxHealth / 100 * currentHealth / 100, uiManager.healthBar.localScale.y);
+            uiManager.fuelBar.localScale = new Vector2(maxFuel / 100 * currentFuel / 100, uiManager.fuelBar.localScale.y);
         }
     }
 }

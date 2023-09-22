@@ -19,10 +19,18 @@ public class ItemWorld : MonoBehaviour
             RocketFuel fuel = other.GetComponent<RocketFuel>();
             if (item.itemType == ItemType.Health)
             {
+                if (fuel.fullyHealed)
+                {
+                    return;
+                }
                 fuel.HealDamage(item.healValue);
             }
             else if (item.itemType == ItemType.Fuel)
             {
+                if (fuel.fullyFueled)
+                {
+                    return;
+                }
                 fuel.GainFuel(item.healValue);
             }
             Destroy(gameObject);

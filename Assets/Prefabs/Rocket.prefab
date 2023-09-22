@@ -127,7 +127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rocketForce: 15
   rocketSideForce: 100
-  crashVelocity: 5
+  crashVelocity: 10
   currentVelocity: 0
   fire: {fileID: 1080874204080954777}
   crashDamageMultiplier: 2
