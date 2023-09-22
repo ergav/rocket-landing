@@ -118,6 +118,7 @@ MonoBehaviour:
   fullyHealed: 0
   fullyFueled: 0
   uiManager: {fileID: 0}
+  explosion: {fileID: 3075143755906687008, guid: 7b8151cb260de8a4fa5027a3c7786a25, type: 3}
 --- !u!114 &3892286860354571623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,6 +158,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 95f1747e8e1069249b460f3662a5e5e6, type: 3}
   - {fileID: 8300000, guid: 6a77479d7b4812346bf511af725536ca, type: 3}
   - {fileID: 8300000, guid: fa15bfd3533fcf9469a9d0d9feea64af, type: 3}
+  repairSounds: []
+  refuelSounds: []
 --- !u!54 &2079026424949700749
 Rigidbody:
   m_ObjectHideFlags: 0

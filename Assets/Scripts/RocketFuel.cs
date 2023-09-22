@@ -23,10 +23,15 @@ public class RocketFuel : MonoBehaviour
     [SerializeField] private UIManager uiManager;
     private RocketSoundManager _soundManager;
 
+    [SerializeField] private GameObject explosion;
+
+    private GameManager _gameManager;
+
 
     private void Start()
     {
         _soundManager = GetComponent<RocketSoundManager>();
+        _gameManager = FindObjectOfType<GameManager>();
         if (uiManager == null)
         {
             uiManager = FindObjectOfType<UIManager>();
@@ -85,20 +90,15 @@ public class RocketFuel : MonoBehaviour
     public void Death()
     {
         Instantiate(rocketGibs, transform.position, transform.rotation);
-        Vector3 explosionPos = transform.up * -5;
-        Collider[] colliders = Physics.OverlapSphere(explosionPos, 10f);
-        foreach (var hit in colliders)
-        {
-            Rigidbody phys = hit.GetComponent<Rigidbody>();
-            if (phys != null)
-            {
-                phys.AddExplosionForce(250, explosionPos, 30, 3);
-            }
-        }
-
+        Instantiate(explosion, transform.position, transform.rotation);
         if (_soundManager != null)
         {
             _soundManager.PlayExplosionSound();
+        }
+
+        if (_gameManager != null)
+        {
+            _gameManager.PlayerDeath();
         }
         Destroy(gameObject);
     }

@@ -7,5 +7,6 @@ public class UIManager : MonoBehaviour
 {
     public Transform healthBar;
     public Transform fuelBar;
-    
+    public GameObject pauseMenu;
+    public GameObject gameOverMenu;
 }
