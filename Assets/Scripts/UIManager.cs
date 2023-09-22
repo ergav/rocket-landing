@@ -9,4 +9,5 @@ public class UIManager : MonoBehaviour
     public Transform fuelBar;
     public GameObject pauseMenu;
     public GameObject gameOverMenu;
+    public GameObject goalMenu;
 }

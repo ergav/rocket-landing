@@ -6,11 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private GameObject player;
+    [SerializeField] private RocketControls player;
 
     [SerializeField] private float deathMenuDisplayDelay = 1;
 
     [HideInInspector]public bool playerIsDead;
+    [HideInInspector]public bool stageIsCleared;
     private float timer;
     private UIManager _uiManager;
 
@@ -18,7 +19,7 @@ public class GameManager : MonoBehaviour
     {
         if (player == null)
         {
-            player = FindObjectOfType<RocketControls>().gameObject;
+            player = FindObjectOfType<RocketControls>();
         }
 
         _uiManager = FindObjectOfType<UIManager>();
@@ -35,10 +36,21 @@ public class GameManager : MonoBehaviour
                 _uiManager.gameOverMenu.SetActive(true);
             }
         }
+
+        if (stageIsCleared)
+        {
+            player.enabled = false;
+        }
     }
 
     public void PlayerDeath()
     {
         playerIsDead = true;
+    }
+
+    public void StageCleared()
+    {
+        _uiManager.goalMenu.SetActive(true);
+        stageIsCleared = true;
     }
 }

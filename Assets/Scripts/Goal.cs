@@ -1,0 +1,46 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Goal : MonoBehaviour
+{
+    private GameManager _manager;
+    [SerializeField] private float goalCounter = 3;
+    private bool playerInGoal;
+    private float timer;
+
+    private void Awake()
+    {
+        _manager = FindObjectOfType<GameManager>();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerInGoal = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerInGoal = false;
+            timer = 0;
+        }    
+    }
+
+    private void Update()
+    {
+        if (playerInGoal)
+        {
+            timer += Time.deltaTime;
+            if (timer >= goalCounter)
+            {
+                _manager.StageCleared();
+            }
+        }
+    }
+}

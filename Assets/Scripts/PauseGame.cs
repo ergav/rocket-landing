@@ -20,7 +20,7 @@ public class PauseGame : MonoBehaviour
 
     public void PauseInput(InputAction.CallbackContext ctx)
     {
-        if (_gameManager.playerIsDead)
+        if (_gameManager.playerIsDead || _gameManager.stageIsCleared)
         {
             return;
         }
