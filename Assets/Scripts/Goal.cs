@@ -37,7 +37,7 @@ public class Goal : MonoBehaviour
         if (playerInGoal)
         {
             timer += Time.deltaTime;
-            if (timer >= goalCounter)
+            if (timer >= goalCounter && !_manager.stageIsCleared)
             {
                 _manager.StageCleared();
             }

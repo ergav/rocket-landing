@@ -29,24 +29,24 @@ public class PauseGame : MonoBehaviour
         if (isPaused)
         {
             UnPause();
-            isPaused = false;
         }
         else
         {
             Pause();
-            isPaused = true;
         }
     }
 
-    private void Pause()
+    public void Pause()
     {
         Time.timeScale = 0;
         _uiManager.pauseMenu.SetActive(true);
+        isPaused = true;
     }
 
-    private void UnPause()
+    public void UnPause()
     {
         Time.timeScale = 1;
         _uiManager.pauseMenu.SetActive(false);
+        isPaused = false;
     }
 }

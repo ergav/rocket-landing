@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 81f714daf7144784b8a2f42f1cd30927, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.2331076, g: 0.23627803, b: 0.27289605, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1012,6 +1012,17 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!114 &358836090 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5490736679779403040, guid: 8053f3cc8e666a04ba642ee901631e8d, type: 3}
+  m_PrefabInstance: {fileID: 3152196140471471488}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1e417cad8a53dc4384d78a979095db2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &493394323
 Mesh:
   m_ObjectHideFlags: 0
@@ -2786,9 +2797,7 @@ GameObject:
   - component: {fileID: 1469081185}
   - component: {fileID: 1469081184}
   - component: {fileID: 1469081186}
-  - component: {fileID: 1469081187}
   - component: {fileID: 1469081188}
-  - component: {fileID: 1469081189}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2822,7 +2831,7 @@ Transform:
   m_GameObject: {fileID: 1469081183}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 158.4519, y: 614.1443, z: 15.925614}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2844,18 +2853,6 @@ MonoBehaviour:
   deathMenuDisplayDelay: 1
   playerIsDead: 0
   stageIsCleared: 0
---- !u!114 &1469081187
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1469081183}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1e417cad8a53dc4384d78a979095db2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1469081188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2895,7 +2892,7 @@ MonoBehaviour:
     m_ActionName: Player/RocketForwardBackward[/Keyboard/w,/Keyboard/s]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1469081187}
+      - m_Target: {fileID: 358836090}
         m_TargetAssemblyTypeName: PauseGame, Assembly-CSharp
         m_MethodName: PauseInput
         m_Mode: 0
@@ -2914,18 +2911,6 @@ MonoBehaviour:
   m_DefaultActionMap: Menu
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &1469081189
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1469081183}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30d935e241617a94587f7299b4e97cb1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1481049710 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1580998119680961157, guid: 8053f3cc8e666a04ba642ee901631e8d, type: 3}
@@ -3770,6 +3755,18 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 522517953}
+    - target: {fileID: 3306493618819409035, guid: 151a0edefaef1a94a8844166e26bae35, type: 3}
+      propertyPath: m_SelectedEdges.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3306493618819409035, guid: 151a0edefaef1a94a8844166e26bae35, type: 3}
+      propertyPath: m_SelectedFaces.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3306493618819409035, guid: 151a0edefaef1a94a8844166e26bae35, type: 3}
+      propertyPath: m_SelectedVertices.Array.size
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4567062659481192583, guid: 151a0edefaef1a94a8844166e26bae35, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -3919,14 +3916,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 7104459165259292088, guid: 8053f3cc8e666a04ba642ee901631e8d, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1469081189}
-    - target: {fileID: 7589730948944158444, guid: 8053f3cc8e666a04ba642ee901631e8d, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1469081189}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

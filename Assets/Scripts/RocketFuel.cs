@@ -26,8 +26,7 @@ public class RocketFuel : MonoBehaviour
     [SerializeField] private GameObject explosion;
 
     private GameManager _gameManager;
-
-
+    
     private void Start()
     {
         _soundManager = GetComponent<RocketSoundManager>();
@@ -133,6 +132,14 @@ public class RocketFuel : MonoBehaviour
         {
             uiManager.healthBar.localScale = new Vector2((maxHealth / 100) * (currentHealth / 100), uiManager.healthBar.localScale.y);
             uiManager.fuelBar.localScale = new Vector2((maxFuel / 100) * (currentFuel / 100), uiManager.fuelBar.localScale.y);
+        }
+
+        if (_gameManager != null)
+        {
+            if (noFuelLeft && !_gameManager.playerIsDead)
+            {
+                _gameManager.PlayerDeath();
+            }
         }
     }
 }
