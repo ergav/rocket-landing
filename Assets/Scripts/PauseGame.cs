@@ -9,16 +9,23 @@ public class PauseGame : MonoBehaviour
     private UIManager _uiManager;
 
     private bool isPaused;
-
+    private GameManager _gameManager;
+    
     private void Awake()
     {
         _uiManager = FindObjectOfType<UIManager>();
+        _gameManager = FindObjectOfType<GameManager>();
         UnPause();
     }
 
     public void PauseInput(InputAction.CallbackContext ctx)
     {
+        if (_gameManager.playerIsDead)
+        {
+            return;
+        }
         Debug.Log("Pausing");
+        
         if (isPaused)
         {
             UnPause();

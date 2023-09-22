@@ -33,6 +33,7 @@ public class Explosion : MonoBehaviour
 
     private void Update()
     {
+        //Scaling the explosion effect game object
         Vector3 finalScale = new Vector3(blastFinalScale, blastFinalScale, blastFinalScale);
         blastEffect.localScale = Vector3.Lerp(blastEffect.localScale, finalScale, t);
 

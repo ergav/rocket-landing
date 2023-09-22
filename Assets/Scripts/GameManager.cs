@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private float deathMenuDisplayDelay = 1;
 
-    private bool playerIsDead;
+    [HideInInspector]public bool playerIsDead;
     private float timer;
     private UIManager _uiManager;
 
