@@ -26,11 +26,14 @@ public class RocketFuel : MonoBehaviour
     [SerializeField] private GameObject explosion;
 
     private GameManager _gameManager;
+
+    private RocketControls _rocketControls;
     
     private void Start()
     {
         _soundManager = GetComponent<RocketSoundManager>();
         _gameManager = FindObjectOfType<GameManager>();
+        _rocketControls = GetComponent<RocketControls>();
         if (uiManager == null)
         {
             uiManager = FindObjectOfType<UIManager>();
@@ -136,7 +139,7 @@ public class RocketFuel : MonoBehaviour
 
         if (_gameManager != null)
         {
-            if (noFuelLeft && !_gameManager.playerIsDead)
+            if (noFuelLeft && !_gameManager.playerIsDead && _rocketControls.isGrounded)
             {
                 _gameManager.PlayerDeath();
             }

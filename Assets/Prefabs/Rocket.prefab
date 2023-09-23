@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 2071960486955320872}
   - component: {fileID: 7886451750254792750}
   - component: {fileID: 905168593351980501}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Rocket
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -44,6 +44,7 @@ Transform:
   - {fileID: 9082658380856404248}
   - {fileID: 3423340374715942986}
   - {fileID: 2331804012371722665}
+  - {fileID: 4484596663760631958}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2464265446652065994
@@ -132,11 +133,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rocketForce: 15
-  rocketSideForce: 100
+  rocketSideForce: 5
   crashVelocity: 10
   currentVelocity: {x: 0, y: 0, z: 0}
   fire: {fileID: 1080874204080954777}
   crashDamageMultiplier: 2
+  groundCheck: {fileID: 4484596663760631958}
+  groundLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  groundCheckBoxSize: {x: 1, y: 0.05, z: 1}
+  isGrounded: 0
 --- !u!114 &5501357610747914609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -266,6 +273,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 4adadb83-0945-4514-8c3a-fbbebaaacda6
     m_ActionName: Player/RocketForwardBackward[/Keyboard/w,/Keyboard/s]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 71da7249-a815-42c8-ae48-d92d050e0dd3
+    m_ActionName: Menu/Pause[/Keyboard/escape,/Keyboard/p]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -1479,6 +1490,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2088228197191985768}
   m_Mesh: {fileID: 0}
+--- !u!1 &2457868791664604581
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4484596663760631958}
+  m_Layer: 0
+  m_Name: GroundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4484596663760631958
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2457868791664604581}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5816859823696174815}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3376954879560224106
 GameObject:
   m_ObjectHideFlags: 0

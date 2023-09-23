@@ -28,6 +28,10 @@ public class RocketControls : MonoBehaviour
 
     private RocketSoundManager _soundManager;
 
+    [SerializeField] private Transform groundCheck;
+    [SerializeField] private LayerMask groundLayerMask;
+    [SerializeField] private Vector3 groundCheckBoxSize;
+    public bool isGrounded;
     
     private void Start()
     {
@@ -73,6 +77,8 @@ public class RocketControls : MonoBehaviour
             fire.SetActive(false);
             _soundManager.StopRocketNozzleSound();
         }
+        
+        CheckGrounded();
     }
 
     public void Crash(float damage)
@@ -101,13 +107,37 @@ public class RocketControls : MonoBehaviour
         }
     }
 
+    private void CheckGrounded()
+    {
+        //isGrounded = Physics.OverlapBox(groundCheck.position, groundCheckBoxSize, Quaternion.identity, groundLayerMask) != null;
+        Collider[] hit = Physics.OverlapBox(groundCheck.position, groundCheckBoxSize, Quaternion.identity,
+            groundLayerMask);
+        if (hit.Length > 0)
+        {
+            isGrounded = true;
+        }
+        else
+        {
+            isGrounded = false;
+        }
+    }
+    
     private void FixedUpdate()
     {
         if (rocketActive && !_fuel.noFuelLeft)
         {
             rb.AddForce(transform.up * rocketForce,ForceMode.Force);
-            rb.AddForce(Vector3.right * leftRightMovement);
-            rb.AddForce(Vector3.forward * forwardBackMovement);
         }
+
+        if (!_fuel.noFuelLeft && !isGrounded)
+        {
+            rb.AddForce(Vector3.right * (leftRightMovement * rocketSideForce));
+            rb.AddForce(Vector3.forward * (forwardBackMovement * rocketSideForce));
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireCube(groundCheck.position, groundCheckBoxSize);
     }
 }
