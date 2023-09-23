@@ -15,7 +15,7 @@ public class RocketControls : MonoBehaviour
 
     [SerializeField] private float crashVelocity = 5f;
 
-    [SerializeField] private float currentVelocity;
+    [SerializeField] private Vector3 currentVelocity;
 
     private float leftRightMovement;
     private float forwardBackMovement;
@@ -60,7 +60,7 @@ public class RocketControls : MonoBehaviour
     
     private void Update()
     {
-        currentVelocity = rb.velocity.y;
+        currentVelocity = rb.velocity;
 
         if (rocketActive && !_fuel.noFuelLeft)
         {
@@ -75,16 +75,29 @@ public class RocketControls : MonoBehaviour
         }
     }
 
+    public void Crash(float damage)
+    {
+        Debug.Log("Crash!");
+        _fuel.TakeDamage(damage);
+        if (_soundManager != null)
+        {
+            _soundManager.PlayCrashSound();
+        }
+    }
+    
     private void OnCollisionEnter(Collision other)
     {
-        if (Mathf.Abs(currentVelocity) > crashVelocity)
+        if (Mathf.Abs(currentVelocity.x) > crashVelocity)
         {
-            Debug.Log("Crash!");
-            _fuel.TakeDamage(crashDamageMultiplier * Mathf.Abs(currentVelocity));
-            if (_soundManager != null)
-            {
-                _soundManager.PlayCrashSound();
-            }
+            Crash(crashDamageMultiplier * Mathf.Abs(currentVelocity.x));
+        }
+        if (Mathf.Abs(currentVelocity.y) > crashVelocity)
+        {
+            Crash(crashDamageMultiplier * Mathf.Abs(currentVelocity.y));
+        }
+        if (Mathf.Abs(currentVelocity.z) > crashVelocity)
+        {
+            Crash(crashDamageMultiplier * Mathf.Abs(currentVelocity.z));
         }
     }
 

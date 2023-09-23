@@ -134,7 +134,7 @@ MonoBehaviour:
   rocketForce: 15
   rocketSideForce: 100
   crashVelocity: 10
-  currentVelocity: 0
+  currentVelocity: {x: 0, y: 0, z: 0}
   fire: {fileID: 1080874204080954777}
   crashDamageMultiplier: 2
 --- !u!114 &5501357610747914609
@@ -158,8 +158,14 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 95f1747e8e1069249b460f3662a5e5e6, type: 3}
   - {fileID: 8300000, guid: 6a77479d7b4812346bf511af725536ca, type: 3}
   - {fileID: 8300000, guid: fa15bfd3533fcf9469a9d0d9feea64af, type: 3}
-  repairSounds: []
-  refuelSounds: []
+  repairSounds:
+  - {fileID: 8300000, guid: 69ffa941456ad254195dd57465f034ea, type: 3}
+  - {fileID: 8300000, guid: 7a9abea6aa672b44299cb22dde6a648f, type: 3}
+  refuelSounds:
+  - {fileID: 8300000, guid: 32546b242ad77ac40b88aee71e476565, type: 3}
+  - {fileID: 8300000, guid: 27b0df134ffc3764b9ac7e2fd78f4e09, type: 3}
+  - {fileID: 8300000, guid: fd52d6fff5a5bff49aa77ce5c21a13e2, type: 3}
+  - {fileID: 8300000, guid: 40089e2500675a941a3ec3e7185c1dab, type: 3}
 --- !u!54 &2079026424949700749
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -342,7 +348,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
