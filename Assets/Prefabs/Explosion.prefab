@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c685844907c5664cba6783ca3190d36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blastRadius: 25
-  explosionForce: 250
+  blastRadius: 200
+  explosionForce: 500
   upwardsModifier: 10
   blastFinalScale: 25
   blastScaleTime: 0.5

@@ -20,13 +20,14 @@ public class Explosion : MonoBehaviour
     {
         blastEffect = GetComponentInChildren<Transform>();
         Vector3 explosionPos = transform.up * -5;
-        Collider[] colliders = Physics.OverlapSphere(explosionPos, 10f);
+        Collider[] colliders = Physics.OverlapSphere(explosionPos, blastRadius);
         foreach (var hit in colliders)
         {
             Rigidbody phys = hit.GetComponent<Rigidbody>();
             if (phys != null)
             {
                 phys.AddExplosionForce(explosionForce, explosionPos, blastRadius, upwardsModifier);
+                Debug.Log("Kaboom!");
             }
         }
     }
@@ -43,5 +44,10 @@ public class Explosion : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, blastRadius);
     }
 }
