@@ -933,7 +933,7 @@ GameObject:
   - component: {fileID: 5113262981410808098}
   - component: {fileID: 8925680992178126481}
   - component: {fileID: 2056918990855268910}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GasCanItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}

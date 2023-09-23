@@ -120,6 +120,7 @@ MonoBehaviour:
   fullyFueled: 0
   uiManager: {fileID: 0}
   explosion: {fileID: 3075143755906687008, guid: 7b8151cb260de8a4fa5027a3c7786a25, type: 3}
+  inGoal: 0
 --- !u!114 &3892286860354571623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,7 +143,7 @@ MonoBehaviour:
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 1
-  groundCheckBoxSize: {x: 1, y: 0.05, z: 1}
+  groundCheckBoxSize: {x: 0.25, y: 0.05, z: 0.25}
   isGrounded: 0
 --- !u!114 &5501357610747914609
 MonoBehaviour:

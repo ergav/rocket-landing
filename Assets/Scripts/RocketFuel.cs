@@ -28,6 +28,8 @@ public class RocketFuel : MonoBehaviour
     private GameManager _gameManager;
 
     private RocketControls _rocketControls;
+
+    [HideInInspector] public bool inGoal;
     
     private void Start()
     {
@@ -56,6 +58,9 @@ public class RocketFuel : MonoBehaviour
         {
             _soundManager.PlayRefuelSound();
         }
+
+        //Just in case you manage to collect a gascan while fuel is empty.
+        noFuelLeft = false;
     }
 
     public void TakeDamage(float amount)
@@ -139,7 +144,7 @@ public class RocketFuel : MonoBehaviour
 
         if (_gameManager != null)
         {
-            if (noFuelLeft && !_gameManager.playerIsDead && _rocketControls.isGrounded)
+            if (noFuelLeft && !_gameManager.playerIsDead && _rocketControls.isGrounded && !inGoal)
             {
                 _gameManager.PlayerDeath();
             }

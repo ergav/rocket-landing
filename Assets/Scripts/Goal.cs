@@ -20,6 +20,8 @@ public class Goal : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInGoal = true;
+            RocketFuel rocketFuel = other.GetComponent<RocketFuel>();
+            rocketFuel.inGoal = true;
         }
     }
 
@@ -29,12 +31,15 @@ public class Goal : MonoBehaviour
         {
             playerInGoal = false;
             timer = 0;
+            
+            RocketFuel rocketFuel = other.GetComponent<RocketFuel>();
+            rocketFuel.inGoal = false;
         }    
     }
 
     private void Update()
     {
-        if (playerInGoal)
+        if (playerInGoal && !_manager.playerIsDead)
         {
             timer += Time.deltaTime;
             if (timer >= goalCounter && !_manager.stageIsCleared)

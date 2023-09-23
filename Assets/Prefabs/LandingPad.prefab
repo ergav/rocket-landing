@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 2664489882715934076}
   - component: {fileID: 2535863136680339110}
   - component: {fileID: 2414516582317728616}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GoalTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
