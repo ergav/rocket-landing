@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -15,6 +16,8 @@ public class GameManager : MonoBehaviour
     private float timer;
     private UIManager _uiManager;
 
+    private CinemachineFreeLook _cinemachineFreeLook;
+
     private void Awake()
     {
         if (player == null)
@@ -23,6 +26,7 @@ public class GameManager : MonoBehaviour
         }
 
         _uiManager = FindObjectOfType<UIManager>();
+        _cinemachineFreeLook = FindObjectOfType<CinemachineFreeLook>();
     }
 
     private void Update()
@@ -39,18 +43,21 @@ public class GameManager : MonoBehaviour
 
         if (stageIsCleared)
         {
-            player.enabled = false;
+            player.DeactivateRocket();
+            //player.enabled = false;
         }
     }
 
     public void PlayerDeath()
     {
         playerIsDead = true;
+        _cinemachineFreeLook.enabled = false;
     }
 
     public void StageCleared()
     {
         _uiManager.goalMenu.SetActive(true);
         stageIsCleared = true;
+        _cinemachineFreeLook.enabled = false;
     }
 }

@@ -32,12 +32,23 @@ public class RocketControls : MonoBehaviour
     [SerializeField] private LayerMask groundLayerMask;
     [SerializeField] private Vector3 groundCheckBoxSize;
     public bool isGrounded;
+
+    [SerializeField] private Transform mainCamera;
+    private Vector3 camForward;
+    private Vector3 camRight;
+    private Vector3 forwardRelative;
+    private Vector3 sideRelative;
+    private Vector3 moveDir;
     
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         _fuel = GetComponent<RocketFuel>();
         _soundManager = GetComponent<RocketSoundManager>();
+        if (mainCamera == null)
+        {
+            mainCamera = FindObjectOfType<Camera>().transform;
+        }
     }
 
     public void RocketInput(InputAction.CallbackContext ctx)
@@ -52,6 +63,15 @@ public class RocketControls : MonoBehaviour
         }
     }
 
+    //This is to prevent the rocket nozzle from still being active when the player reaches the goal.
+    public void DeactivateRocket()
+    {
+        rocketActive = false;
+        fire.SetActive(false);
+        _soundManager.StopRocketNozzleSound();
+        this.enabled = false;
+    }
+    
     public void RocketLeftRightInput(InputAction.CallbackContext ctx)
     {
         leftRightMovement = ctx.ReadValue<float>();
@@ -79,6 +99,17 @@ public class RocketControls : MonoBehaviour
         }
         
         CheckGrounded();
+
+        camForward = mainCamera.forward;
+        camRight = mainCamera.right;
+
+        camRight.y = 0;
+        camForward.y = 0;
+
+        forwardRelative = forwardBackMovement * camForward;
+        sideRelative = leftRightMovement * camRight;
+
+        moveDir = forwardRelative + sideRelative;
     }
 
     public void Crash(float damage)
@@ -131,8 +162,10 @@ public class RocketControls : MonoBehaviour
 
         if (!_fuel.noFuelLeft && !isGrounded)
         {
-            rb.AddForce(Vector3.right * (leftRightMovement * rocketSideForce));
-            rb.AddForce(Vector3.forward * (forwardBackMovement * rocketSideForce));
+            rb.AddForce(moveDir.x * rocketSideForce, 0, moveDir.z * rocketSideForce);
+            
+            // rb.AddForce(Vector3.right * (leftRightMovement * rocketSideForce));
+            // rb.AddForce(Vector3.forward * (forwardBackMovement * rocketSideForce));
         }
     }
 
