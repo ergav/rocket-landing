@@ -107,10 +107,6 @@ public class RocketFuel : MonoBehaviour
     {
         Instantiate(rocketGibs, transform.position, transform.rotation);
         Instantiate(explosion, transform.position, transform.rotation);
-        if (_soundManager != null)
-        {
-            _soundManager.PlayExplosionSound();
-        }
 
         if (_gameManager != null)
         {

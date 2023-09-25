@@ -275,3 +275,5 @@ MonoBehaviour:
   fireCooldown: 5
   projectileSpeed: 5
   damageToGive: 20
+  fireSounds:
+  - {fileID: 8300000, guid: 269fe745ba7c2dd4c93f145f52a6ba96, type: 3}

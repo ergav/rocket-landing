@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class EnemyTurret : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class EnemyTurret : MonoBehaviour
     [SerializeField] private float fireCooldown = 5;
     [SerializeField] private float projectileSpeed = 5;
     [SerializeField] private float damageToGive = 20;
+    [SerializeField] private AudioClip[] fireSounds;
 
     private float timer;
 
@@ -53,5 +55,13 @@ public class EnemyTurret : MonoBehaviour
     {
         CannonBall instantiatedCannonball = Instantiate(projectilePrefab.GetComponent<CannonBall>(), projectileSpawnPoint.position, projectileSpawnPoint.rotation);
         instantiatedCannonball.Initialize(damageToGive, projectileSpeed);
+        PlayFireSound();
+    }
+
+    private void PlayFireSound()
+    {
+        int rng = Random.Range(0, fireSounds.Length);
+        AudioSource.PlayClipAtPoint(fireSounds[rng], transform.position, 1);
+
     }
 }
