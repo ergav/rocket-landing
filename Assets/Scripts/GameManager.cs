@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour
 
         _uiManager = FindObjectOfType<UIManager>();
         _cinemachineFreeLook = FindObjectOfType<CinemachineFreeLook>();
+        
+        LockCursor();
     }
 
     private void Update()
@@ -52,6 +54,7 @@ public class GameManager : MonoBehaviour
     {
         playerIsDead = true;
         _cinemachineFreeLook.enabled = false;
+        UnLockCursor();
     }
 
     public void StageCleared()
@@ -59,5 +62,18 @@ public class GameManager : MonoBehaviour
         _uiManager.goalMenu.SetActive(true);
         stageIsCleared = true;
         _cinemachineFreeLook.enabled = false;
+        UnLockCursor();
+    }
+
+    public void LockCursor()
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    public void UnLockCursor()
+    {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 }

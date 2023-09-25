@@ -41,6 +41,7 @@ public class PauseGame : MonoBehaviour
         Time.timeScale = 0;
         _uiManager.pauseMenu.SetActive(true);
         isPaused = true;
+        _gameManager.UnLockCursor();
     }
 
     public void UnPause()
@@ -48,5 +49,6 @@ public class PauseGame : MonoBehaviour
         Time.timeScale = 1;
         _uiManager.pauseMenu.SetActive(false);
         isPaused = false;
+        _gameManager.LockCursor();
     }
 }
