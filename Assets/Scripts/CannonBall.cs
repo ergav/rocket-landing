@@ -40,7 +40,10 @@ public class CannonBall : MonoBehaviour
         if (other.collider.CompareTag("Player"))
         {
             RocketFuel rocketFuel = other.collider.GetComponent<RocketFuel>();
-            rocketFuel.TakeDamage(damageToGive);
+            if (rocketFuel != null)
+            {
+                rocketFuel.TakeDamage(damageToGive);
+            }
             Impact();
         }
     }
