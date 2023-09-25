@@ -14,9 +14,7 @@ public class RocketControls : MonoBehaviour
     private bool rocketActive;
 
     [SerializeField] private float crashVelocity = 5f;
-
-    [SerializeField] private Vector3 currentVelocity;
-
+    
     private float leftRightMovement;
     private float forwardBackMovement;
 
@@ -39,6 +37,8 @@ public class RocketControls : MonoBehaviour
     private Vector3 forwardRelative;
     private Vector3 sideRelative;
     private Vector3 moveDir;
+
+    [SerializeField] private float currentSpeed;
     
     private void Start()
     {
@@ -84,8 +84,8 @@ public class RocketControls : MonoBehaviour
     
     private void Update()
     {
-        currentVelocity = rb.velocity;
-
+        currentSpeed = rb.velocity.magnitude;
+        
         if (rocketActive && !_fuel.noFuelLeft)
         {
             _fuel.DrainFuel();
@@ -124,23 +124,14 @@ public class RocketControls : MonoBehaviour
     
     private void OnCollisionEnter(Collision other)
     {
-        if (Mathf.Abs(currentVelocity.x) > crashVelocity)
+        if (currentSpeed > crashVelocity)
         {
-            Crash(crashDamageMultiplier * Mathf.Abs(currentVelocity.x));
-        }
-        if (Mathf.Abs(currentVelocity.y) > crashVelocity)
-        {
-            Crash(crashDamageMultiplier * Mathf.Abs(currentVelocity.y));
-        }
-        if (Mathf.Abs(currentVelocity.z) > crashVelocity)
-        {
-            Crash(crashDamageMultiplier * Mathf.Abs(currentVelocity.z));
+            Crash(crashDamageMultiplier * currentSpeed);
         }
     }
 
     private void CheckGrounded()
     {
-        //isGrounded = Physics.OverlapBox(groundCheck.position, groundCheckBoxSize, Quaternion.identity, groundLayerMask) != null;
         Collider[] hit = Physics.OverlapBox(groundCheck.position, groundCheckBoxSize, Quaternion.identity,
             groundLayerMask);
         if (hit.Length > 0)
@@ -163,9 +154,6 @@ public class RocketControls : MonoBehaviour
         if (!_fuel.noFuelLeft && !isGrounded)
         {
             rb.AddForce(moveDir.x * rocketSideForce, 0, moveDir.z * rocketSideForce);
-            
-            // rb.AddForce(Vector3.right * (leftRightMovement * rocketSideForce));
-            // rb.AddForce(Vector3.forward * (forwardBackMovement * rocketSideForce));
         }
     }
 

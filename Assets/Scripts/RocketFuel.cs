@@ -30,6 +30,8 @@ public class RocketFuel : MonoBehaviour
     private RocketControls _rocketControls;
 
     [HideInInspector] public bool inGoal;
+
+    private bool isDead;
     
     private void Start()
     {
@@ -75,6 +77,13 @@ public class RocketFuel : MonoBehaviour
             {
                 uiManager.healthBar.localScale = new Vector2((maxHealth / 100) * (currentHealth / 100), uiManager.healthBar.localScale.y);
             }
+
+            //This is needed to prevent multiple gibs from spawning
+            if (isDead)
+            {
+                return;
+            }
+            
             Death();
         }
     }
@@ -107,6 +116,8 @@ public class RocketFuel : MonoBehaviour
         {
             _gameManager.PlayerDeath();
         }
+
+        isDead = true;
         Destroy(gameObject);
     }
     
