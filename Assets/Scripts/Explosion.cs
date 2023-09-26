@@ -24,14 +24,13 @@ public class Explosion : MonoBehaviour
         blastEffect = GetComponentInChildren<Transform>();
         int rng = Random.Range(0, explodeSounds.Length);
         AudioSource.PlayClipAtPoint(explodeSounds[rng], transform.position, 1);
-        Vector3 explosionPos = transform.up * -5;
-        Collider[] colliders = Physics.OverlapSphere(explosionPos, blastRadius);
+        Collider[] colliders = Physics.OverlapSphere(transform.position, blastRadius);
         foreach (var hit in colliders)
         {
             Rigidbody phys = hit.GetComponent<Rigidbody>();
             if (phys != null)
             {
-                phys.AddExplosionForce(explosionForce, explosionPos, blastRadius, upwardsModifier);
+                phys.AddExplosionForce(explosionForce, transform.position, blastRadius, upwardsModifier);
                 Debug.Log("Kaboom!");
             }
         }
