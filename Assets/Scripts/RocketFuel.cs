@@ -67,6 +67,11 @@ public class RocketFuel : MonoBehaviour
 
     public void TakeDamage(float amount)
     {
+        if (_gameManager.stageIsCleared)
+        {
+            return;
+        }
+        
         currentHealth -= amount;
         Debug.Log(amount + " damage taken!");
 

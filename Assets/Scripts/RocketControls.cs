@@ -124,6 +124,10 @@ public class RocketControls : MonoBehaviour
     
     private void OnCollisionEnter(Collision other)
     {
+        if (other.gameObject.CompareTag("Projectile"))
+        {
+            return;
+        }
         if (currentSpeed > crashVelocity)
         {
             Crash(crashDamageMultiplier * currentSpeed);

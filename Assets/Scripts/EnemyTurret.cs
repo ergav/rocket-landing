@@ -19,12 +19,16 @@ public class EnemyTurret : MonoBehaviour
 
     private float timer;
 
+    private GameManager gameManager;
+
     private void Awake()
     {
         if (target == null)
         {
             target = FindObjectOfType<RocketControls>().transform;
         }
+
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     private void Update()
@@ -37,6 +41,20 @@ public class EnemyTurret : MonoBehaviour
         if (Vector3.Distance(transform.position, target.position) > targetDetectionRange)
         {
             return;
+        }
+
+        if (gameManager.stageIsCleared)
+        {
+            return;
+        }
+
+        RaycastHit hit;
+        if (Physics.Linecast(transform.position, target.position, out hit))
+        {
+            if (!hit.collider.CompareTag("Player"))
+            {
+                return;
+            }
         }
         
         Vector3 targetDir = target.position - transform.position;
@@ -62,6 +80,5 @@ public class EnemyTurret : MonoBehaviour
     {
         int rng = Random.Range(0, fireSounds.Length);
         AudioSource.PlayClipAtPoint(fireSounds[rng], transform.position, 1);
-
     }
 }

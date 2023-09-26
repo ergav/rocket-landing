@@ -270,10 +270,10 @@ MonoBehaviour:
   projectileSpawnPoint: {fileID: 1988296622770290888}
   rotationSpeed: 1
   target: {fileID: 0}
-  targetDetectionRange: 50
+  targetDetectionRange: 100
   turretBody: {fileID: 5401475948196497115}
   fireCooldown: 2.5
-  projectileSpeed: 10
+  projectileSpeed: 20
   damageToGive: 20
   fireSounds:
   - {fileID: 8300000, guid: 269fe745ba7c2dd4c93f145f52a6ba96, type: 3}
