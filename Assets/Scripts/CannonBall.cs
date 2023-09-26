@@ -16,6 +16,7 @@ public class CannonBall : MonoBehaviour
     {
         damageToGive = damage;
         projectileSpeed = speed;
+        timer = 0;
     }
 
     private void Update()
@@ -25,14 +26,14 @@ public class CannonBall : MonoBehaviour
         timer += Time.deltaTime;
         if (timer >= lifespan)
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 
     private void Impact()
     {
         Instantiate(explosionPrefab, transform.position, transform.rotation);
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
     private void OnCollisionEnter(Collision other)

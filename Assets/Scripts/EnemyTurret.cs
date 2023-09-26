@@ -20,6 +20,7 @@ public class EnemyTurret : MonoBehaviour
     private float timer;
 
     private GameManager gameManager;
+    private ObjectPool objectPool;
 
     private void Awake()
     {
@@ -29,6 +30,7 @@ public class EnemyTurret : MonoBehaviour
         }
 
         gameManager = FindObjectOfType<GameManager>();
+        objectPool = GetComponent<ObjectPool>();
     }
 
     private void Update()
@@ -71,9 +73,19 @@ public class EnemyTurret : MonoBehaviour
 
     private void FireProjectile()
     {
-        CannonBall instantiatedCannonball = Instantiate(projectilePrefab.GetComponent<CannonBall>(), projectileSpawnPoint.position, projectileSpawnPoint.rotation);
-        instantiatedCannonball.Initialize(damageToGive, projectileSpeed);
-        PlayFireSound();
+        GameObject bullet = objectPool.GetPooledObject();
+
+        if (bullet != null) 
+        {
+            CannonBall cannonBall = bullet.GetComponent<CannonBall>();
+            cannonBall.Initialize(damageToGive, projectileSpeed);
+            bullet.transform.position = projectileSpawnPoint.transform.position;
+            bullet.transform.rotation = projectileSpawnPoint.transform.rotation;
+            bullet.SetActive(true);
+            PlayFireSound();
+        }
+        // CannonBall instantiatedCannonball = Instantiate(projectilePrefab.GetComponent<CannonBall>(), projectileSpawnPoint.position, projectileSpawnPoint.rotation);
+        // instantiatedCannonball.Initialize(damageToGive, projectileSpeed);
     }
 
     private void PlayFireSound()

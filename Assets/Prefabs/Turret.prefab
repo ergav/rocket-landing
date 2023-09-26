@@ -231,6 +231,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4146819542609420155}
   - component: {fileID: 3070983553851391907}
+  - component: {fileID: 1610050271663844716}
   m_Layer: 0
   m_Name: Turret
   m_TagString: Untagged
@@ -277,3 +278,18 @@ MonoBehaviour:
   damageToGive: 20
   fireSounds:
   - {fileID: 8300000, guid: 269fe745ba7c2dd4c93f145f52a6ba96, type: 3}
+--- !u!114 &1610050271663844716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5502209918791824310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9a80e75e077a634d9ddb18bd55abab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pooledObjects: []
+  objectToPool: {fileID: 8726009882174853339, guid: 1b8c3dce1a2c0d84b94dce66d1e48e66, type: 3}
+  maxPoolAmount: 5
