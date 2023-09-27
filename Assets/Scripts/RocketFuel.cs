@@ -32,6 +32,8 @@ public class RocketFuel : MonoBehaviour
     [HideInInspector] public bool inGoal;
 
     private bool isDead;
+
+    private float percentageOfHealth, percentageOfFuel;
     
     private void Start()
     {
@@ -77,12 +79,6 @@ public class RocketFuel : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            currentHealth = 0;
-            if (uiManager != null)
-            {
-                uiManager.healthBar.localScale = new Vector2((maxHealth / 100) * (currentHealth / 100), uiManager.healthBar.localScale.y);
-            }
-
             //This is needed to prevent multiple gibs from spawning
             if (isDead)
             {
@@ -119,11 +115,22 @@ public class RocketFuel : MonoBehaviour
         }
 
         isDead = true;
+        
+        currentHealth = 0;
+        percentageOfHealth = currentHealth / maxHealth;
+        if (uiManager != null)
+        {
+            uiManager.healthBar.localScale = new Vector2(percentageOfHealth, uiManager.healthBar.localScale.y);
+            Debug.Log("Hey!");
+        }
         Destroy(gameObject);
     }
     
     private void Update()
     {
+        percentageOfFuel = currentFuel / maxFuel;
+        percentageOfHealth = currentHealth / maxHealth;
+        
         if (currentFuel <= 0)
         {
             currentFuel = 0;
@@ -150,8 +157,8 @@ public class RocketFuel : MonoBehaviour
         
         if (uiManager != null)
         {
-            uiManager.healthBar.localScale = new Vector2((maxHealth / 100) * (currentHealth / 100), uiManager.healthBar.localScale.y);
-            uiManager.fuelBar.localScale = new Vector2((maxFuel / 100) * (currentFuel / 100), uiManager.fuelBar.localScale.y);
+            uiManager.healthBar.localScale = new Vector2(percentageOfHealth, uiManager.healthBar.localScale.y);
+            uiManager.fuelBar.localScale = new Vector2(percentageOfFuel, uiManager.fuelBar.localScale.y);
         }
 
         if (_gameManager != null)
