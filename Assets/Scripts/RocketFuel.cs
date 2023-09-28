@@ -121,7 +121,6 @@ public class RocketFuel : MonoBehaviour
         if (uiManager != null)
         {
             uiManager.healthBar.localScale = new Vector2(percentageOfHealth, uiManager.healthBar.localScale.y);
-            Debug.Log("Hey!");
         }
         Destroy(gameObject);
     }

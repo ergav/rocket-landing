@@ -10,6 +10,11 @@ public class InstaKillZone : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             RocketFuel fuel = other.GetComponent<RocketFuel>();
+            GameManager gameManager = FindObjectOfType<GameManager>();
+            if (gameManager.stageIsCleared)
+            {
+                return;
+            }
             fuel.Death();
         }
     }
