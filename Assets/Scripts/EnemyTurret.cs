@@ -84,8 +84,6 @@ public class EnemyTurret : MonoBehaviour
             bullet.SetActive(true);
             PlayFireSound();
         }
-        // CannonBall instantiatedCannonball = Instantiate(projectilePrefab.GetComponent<CannonBall>(), projectileSpawnPoint.position, projectileSpawnPoint.rotation);
-        // instantiatedCannonball.Initialize(damageToGive, projectileSpeed);
     }
 
     private void PlayFireSound()

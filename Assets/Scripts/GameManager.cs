@@ -46,7 +46,6 @@ public class GameManager : MonoBehaviour
         if (stageIsCleared)
         {
             player.DeactivateRocket();
-            //player.enabled = false;
         }
     }
 

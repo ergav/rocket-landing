@@ -7,6 +7,7 @@ public class ItemWorld : MonoBehaviour
 {
     [SerializeField] private float rotationSpeed;
     [SerializeField] private Item item;
+    
     void Update()
     {
         transform.Rotate(0, rotationSpeed * Time.deltaTime, 0);
