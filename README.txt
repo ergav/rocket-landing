@@ -15,3 +15,4 @@ Notes:
 Sources:
 -https://learn.unity.com/tutorial/introduction-to-object-pooling#5ff8d015edbc2a002063971d
 -https://www.youtube.com/watch?v=reWtxGTyN78&ab_channel=TheGameDevCave
+-Sound effects taken from Half-Life 2 and Team Fortress 2.
