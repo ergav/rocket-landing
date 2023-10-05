@@ -39,6 +39,8 @@ public class RocketControls : MonoBehaviour
     private Vector3 moveDir;
 
     [SerializeField] private float currentSpeed;
+
+    private float groundTimer;
     
     private void Start()
     {
@@ -110,6 +112,15 @@ public class RocketControls : MonoBehaviour
         sideRelative = leftRightMovement * camRight;
 
         moveDir = forwardRelative + sideRelative;
+
+        if (currentSpeed <= 0)
+        {
+            groundTimer += Time.deltaTime;
+        }
+        else
+        {
+            groundTimer = 0;
+        }
     }
 
     public void Crash(float damage)
@@ -138,7 +149,7 @@ public class RocketControls : MonoBehaviour
     {
         Collider[] hit = Physics.OverlapBox(groundCheck.position, groundCheckBoxSize, Quaternion.identity,
             groundLayerMask);
-        if (hit.Length > 0)
+        if (hit.Length > 0 || groundTimer >= 1)
         {
             isGrounded = true;
         }
